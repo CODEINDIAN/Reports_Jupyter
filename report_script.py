@@ -1,4 +1,3 @@
-# Importing libraries
 import os
 import warnings
 warnings.filterwarnings('ignore')
@@ -6,8 +5,8 @@ from IPython.display import display,Markdown
 import matplotlib.pyplot as plt
 import matplotlib.image as img
 import seaborn as sns
-import pandas as pd
 
+import pandas as pd
 
 def printmd(string):
     display(Markdown(string))
