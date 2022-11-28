@@ -62,15 +62,15 @@ for i in os.listdir(project_folder+'//Plots'):
     # print(i)
     
     
-    for i in os.listdir(project_folder+'//Metrics'):
-        table_name=i[:-4]
-        # print(project_folder+'//Plots//'+i)
-        with open(project_folder+'//Metrics//'+i, "rb") as img_file:
-            base = base64.b64encode(img_file.read())
+for i in os.listdir(project_folder+'//Metrics'):
+    table_name=i[:-4]
+    print(i)
+    with open(project_folder+'//Metrics//'+i, "rb") as img_file:
+        base = base64.b64encode(img_file.read())
         # print(base[2:-1])
         
 
-        section=f''' 
+    section=f''' 
         <div class='plot-sec'>
         <h1 class='plot-name'>
         {i[:-4]}
@@ -80,13 +80,12 @@ for i in os.listdir(project_folder+'//Plots'):
         </div>
         </div>
         '''
-        plot_section+=section
+    metric_section+=section
     
     
     
     
 html=f'''
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,9 +98,7 @@ html=f'''
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
-
 }}
-
 .table-sec {{
     margin: 50px 50px;
 }}
@@ -109,7 +106,6 @@ html=f'''
 .table-name {{
     text-transform: capitalize;
 }}
-
  td, #customers th {{
  text-overflow: ellipsis;
   border: 1px solid #ddd;
@@ -122,9 +118,7 @@ html=f'''
     overflow-x: scroll;
 }}
  tr:nth-child(even){{background-color: #f2f2f2;}}
-
  tr:hover {{background-color: #ddd;}}
-
  th {{
   padding-top: 12px;
   padding-bottom: 12px;
@@ -144,21 +138,18 @@ h1.project-name {{
     color: cadetblue;
 }}
  
-
 .plot-section {{
     display: flex;
     flex-direction: column;
     align-items: stretch;
     padding:100px;
 }}
-
 .metrics-section {{
     display: flex;
     flex-direction: column;
     align-items: stretch;
     padding:100px;
 }}
-
 .plot > img {{
     width: 100%;
     padding:50px;
@@ -175,7 +166,7 @@ h1.project-name {{
 <div class='plot-section'>
 {plot_section}
 </div>
-<div class-'metrics-section'>
+<div class='metrics-section'>
 {metric_section}
 </div> 
 </body>
@@ -185,4 +176,3 @@ h1.project-name {{
 
 with open('report.html', 'w',encoding="utf-8") as f:
     f.write(html)
-    
